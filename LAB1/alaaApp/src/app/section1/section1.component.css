@@ -1,0 +1,24 @@
+#sec1{
+   scroll-behavior: smooth;
+}
+#sec1::-webkit-scrollbar{
+    display:none;
+}
+#main-nav{
+    background-color: transparent;
+}
+section{
+    height: 100vh;
+}
+#home{
+    background: url("https://images.pexels.com/photos/8092357/pexels-photo-8092357.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.custom-col1{
+    margin-top: 25%;
+}
+i{
+    color:black;
+}

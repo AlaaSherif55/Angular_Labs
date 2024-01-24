@@ -1,0 +1,18 @@
+#sec2{
+    scroll-behavior: smooth;
+ }
+ #sec2::-webkit-scrollbar{
+     display:none;
+ }
+img{
+    filter:grayscale(1)
+}
+.img-hero{
+    height: auto;
+    border-radius: 50px;
+}
+
+.spacing{
+    margin-top:5%
+    
+}
