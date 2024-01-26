@@ -13,7 +13,6 @@ export class Section1Component {
   @Output() sentTaskToParent = new EventEmitter<string>();
 
   addTask() {
-    console.log(this.newTask);
     this.sentTaskToParent.emit(this.newTask);
   }
 }

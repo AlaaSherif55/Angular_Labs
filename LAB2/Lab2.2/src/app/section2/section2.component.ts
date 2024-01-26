@@ -11,8 +11,7 @@ import { NgModule } from '@angular/core';
 })
 export class Section2Component {
   private tasks: string[] = [];
-  private selectedTaskIndex: number | null = null;
-
+  
   getTasks() {
     return this.tasks;
   }
