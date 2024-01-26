@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        @for(user of users; track user.id){
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                  <img [src]="user.image" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <h6 class="card-title">{{user.username}}</h6>
+                        <span class="ml-2">
+                            @if(user.is_verified){
+                                <i class="fas fa-star ms" style="color: red;"></i>
+                            }@else{
+                                <i class="fas fa-star ms" style="color: green;"></i>
+                            }
+                        </span>
+                    </div>
+                    <h6 class="card-title">{{user.email}}</h6>
+                    <h6 class="card-title">{{user.phone}}</h6>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<!--Parent-->
+<div class="container-fluid bg-light">
+    <div class="container bg-light">
+
+        <div class="row mt-4" style="height: 500px;">
+            <div class="col"></div>
+            <div class="col-md-6 bg-white shadow">
+                <!--Parent take value from section1 in the input new task-->
+                <app-section1 (sentTaskToParent)="sendToSection2($event)"></app-section1>
+                <!--Parent pass value to section2-->
+                <app-section2 ></app-section2>    
+            </div>
+            <div class="col"></div>
+        </div>
+
+    </div>
+</div>

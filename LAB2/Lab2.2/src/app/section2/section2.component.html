@@ -1,0 +1,11 @@
+<h4 class="text-primary mt-4">Tasks :</h4>
+<div *ngFor="let task of getTasks(); let i = index" style="overflow-y: auto; height: 80px;">
+  <div class="m-2">
+    <div class="p-2 shadow border" id="tasks">
+      <div class="input-group row ps-3">
+        <div class="card col-md-10 border-0">{{ task }}</div>
+        <div class="btn btn-outline-danger col" (click)="deleteTask(i)">X</div>
+      </div>
+    </div>
+  </div>
+</div>
