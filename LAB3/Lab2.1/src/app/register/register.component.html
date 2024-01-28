@@ -1,1 +1,82 @@
-<p>register works!</p>
+<div id="formDiv" class="border rounded p-3 shadow w-50 h-50 mt-2 m-auto">
+    <div>
+      <h2>Register</h2>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="handleFormSubmit()" class="mb-3 w-75">
+      <div class="form-group">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          formControlName="name"
+        />
+        <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="form-text text-danger">
+          <small *ngIf="registerForm.get('name')?.hasError('required')">This field is required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="form-label">Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          aria-describedby="emailHelp"
+          name="email"
+          formControlName="email"
+        />
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="form-text text-danger">
+          <small *ngIf="registerForm.controls['email'].errors?.['pattern']">Invalid email format</small>
+          <small *ngIf="registerForm.controls['email'].errors?.['required']">This field is required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          formControlName="username"
+        />
+        <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="form-text text-danger">
+          <small *ngIf="registerForm.get('username')?.hasError('required')">This field is required</small>
+          <small *ngIf="registerForm.get('username')?.hasError('pattern')">Username should not contain spaces</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          aria-describedby="passwordHelp"
+          name="password"
+          formControlName="password"
+        />
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="form-text text-danger">
+          <small *ngIf="registerForm.get('password')?.hasError('required')">This field is required</small>
+          <small *ngIf="registerForm.get('password')?.hasError('pattern')">password length not less, than 8 characters , contains at least one, lowercase , one uppercase , at least one digit and special character</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Confrim Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          aria-describedby="passwordHelp"
+          name="password"
+          formControlName="password"
+        />
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="form-text text-danger">
+          <small *ngIf="registerForm.get('password')?.hasError('required')">This field is required</small>
+          <small *ngIf="registerForm.get('password')?.hasError('pattern')">password length not less, than 8 characters , contains at least one, lowercase , one uppercase , at least one digit and special character</small>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mb-3 mt-3 w-100" [disabled]="registerForm.invalid">Register</button>
+    </form>
+    <div>Already have an account? <a routerLink="/login">Login</a></div>
+  </div>
+  
