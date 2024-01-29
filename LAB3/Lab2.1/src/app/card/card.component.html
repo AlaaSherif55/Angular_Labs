@@ -1,1 +1,44 @@
-<p>card </p>
+<div class="w-75 m-auto">
+    <h1>Cart</h1>
+    <table class="w-100">
+        <tr class="border-bottom">
+            <th style="width: 15%"></th>
+            <th style="width: 40%; text-align: center;">Description</th>
+            <th style="width: 20%; text-align: center;">Quantity</th>
+            <th style="width: 15%; text-align: center;">Remove</th>
+            <th style="width: 10%; text-align: center;">Price</th>
+        </tr>
+        <ng-container *ngFor="let product of products; let i = index">
+            <tr class="border-bottom">
+                <td style="width: 15%">
+                    <div class="img-container">
+                        <div class="img-prdct">
+                            <img [src]="product.thumbnail" alt="{{product.description}}">
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 40%; text-align: center;">{{product.description}}</td>
+                <td style="width: 20%">
+                    <div class="d-flex justify-content-center align-items-center button-container">
+                        <button class="quantity-btn" (click)="decreaseQuantity(i)" style="background-color: #1E90FF; color: #fff;">-</button>
+                        <input type="text" [(ngModel)]="quantities[i]" class="quantity-input" />
+                        <button class="quantity-btn" (click)="increaseQuantity(i)" style="background-color: #1E90FF; color: #fff;">+</button>
+                    </div>
+                </td>
+                <td style="width: 15%; text-align: center;"><button class="rmvbtn rounded small" (click)="removeProduct(i)">X</button></td>
+                <td style="width: 10%; text-align: center;">${{product.price}}</td>
+            </tr>
+        </ng-container>
+    </table>
+    <div class="w-25 me-0 container total-container">
+        <div class="row">
+            <div class="col">
+                Total
+            </div>
+            <div class="col">
+                ${{totalSalary}}
+            </div>
+            
+        </div>
+    </div>
+</div>

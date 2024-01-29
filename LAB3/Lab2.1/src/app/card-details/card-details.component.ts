@@ -5,7 +5,8 @@ import { CurrencyPipe } from '@angular/common';
 import { RouterLink,RouterLinkActive } from '@angular/router';
 import { Product } from '../interface/product';
 import Products from '../../../products-list.json';
-import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { ProductRequestsService } from '../services/product-requests.service';
+import { ProductShareService } from '../services/product-share.service';
 
 @Component({
   selector: 'app-card-details',
@@ -25,10 +26,12 @@ export class CardDetailsComponent {
   bigImgSrc?: string;
   product!:Product;
   @Input() id:string="";
+  constructor(private productRequests: ProductRequestsService, private productShareService:ProductShareService ){
+  }
   showImg(pic: string): void {
     this.bigImgSrc = pic;
   }
-
+     
    createProduct(): Product {
     return {
       id: 0,
@@ -47,6 +50,10 @@ export class CardDetailsComponent {
   }
 
   ngOnInit() {
-    this.product = this.products.find((product: Product) => product.id == parseInt(this.id)) || this.createProduct();
+    // this.product = this.products.find((product: Product) => product.id == parseInt(this.id)) || this.createProduct();
+    this.productRequests.getProductList(this.id).subscribe((res:any)=>this.product=res);
+  }
+  addToCart(){
+    this.productShareService.addProduct(this.product);
   }
 }

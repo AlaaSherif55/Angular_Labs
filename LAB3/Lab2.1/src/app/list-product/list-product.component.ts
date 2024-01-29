@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import Products from '../../../products-list.json';
+// import Products from '../../../products-list.json';
 import { Product } from '../interface/product';
 import { CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterLink,RouterLinkActive } from '@angular/router';
+import { ProductRequestsService } from '../services/product-requests.service';
 @Component({
   selector: 'app-list-product',
   standalone: true,
@@ -13,6 +14,15 @@ import { RouterLink,RouterLinkActive } from '@angular/router';
   styleUrl: './list-product.component.css'
 })
 export class ListProductComponent {
-   products: Array<Product>=Products;
+   products!: Array<Product>;
+   constructor(private productRequests: ProductRequestsService){
+    
+   }
+ 
+   ngOnInit() {
+     this.productRequests.getProductsList().subscribe(
+       (res:any) => this.products=res.products
+     );
+    }
 
 }
